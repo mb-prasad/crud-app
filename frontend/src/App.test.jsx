@@ -50,3 +50,18 @@ describe('App login route', () => {
     expect(screen.getByLabelText('Password')).toBeInTheDocument()
   })
 })
+
+describe('App reset password route', () => {
+  it('renders the Reset Password page when starting at /reset-password', () => {
+    renderAt('/reset-password')
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Reset Password')
+    expect(screen.getByLabelText('Email')).toHaveAttribute('type', 'email')
+  })
+
+  it('navigates to Reset Password when Forgot password link is clicked on Login', async () => {
+    const user = userEvent.setup()
+    renderAt('/login')
+    await user.click(screen.getByRole('link', { name: 'Forgot password?' }))
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Reset Password')
+  })
+})
