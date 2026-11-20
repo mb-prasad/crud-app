@@ -43,3 +43,13 @@ describe('Login', () => {
     expect(button.closest('form')).not.toBeNull()
   })
 })
+
+describe('Login forgot password', () => {
+  it('renders a Forgot password link to /reset-password', () => {
+    renderLogin()
+    expect(screen.getByRole('link', { name: 'Forgot password?' })).toHaveAttribute(
+      'href',
+      '/reset-password',
+    )
+  })
+})

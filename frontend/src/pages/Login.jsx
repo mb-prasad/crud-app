@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 function Login() {
   // No authentication backend yet: submitting the form only prevents the page reload.
   const handleSubmit = (event) => {
@@ -18,6 +20,9 @@ function Login() {
         </div>
         <button type="submit">Login</button>
       </form>
+      <p>
+        <Link to="/reset-password">Forgot password?</Link>
+      </p>
     </section>
   )
 }
